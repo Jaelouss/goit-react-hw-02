@@ -21,7 +21,7 @@ const App = () => {
   });
 
   const updateFeedback = (feedbackType) => {
-    if (feedbackType) {
+    if (feedbackType !== 'reset') {
       setReaction((prevReaction) => ({
         ...prevReaction,
         [feedbackType]: prevReaction[feedbackType] + 1,
@@ -37,16 +37,19 @@ const App = () => {
 
   const total = reaction.good + reaction.bad + reaction.neutral;
 
+  const positive =
+    total > 0 ? Math.round((reaction.good / total) * 100) + '%' : '0%';
+
   useEffect(() => {
     setLocal('savedFeedback', reaction);
-  });
+  }, [reaction]);
 
   return (
     <>
       <Description />
-      <Options vote={updateFeedback} total={total} />
+      <Options estim={updateFeedback} total={total} />
       {total > 0 ? (
-        <Feedback reaction={reaction} total={total} />
+        <Feedback reaction={reaction} total={total} positive={positive} />
       ) : (
         <Notification />
       )}

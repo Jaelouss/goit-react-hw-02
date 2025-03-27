@@ -1,8 +1,6 @@
 import React from 'react';
 
-const Feedback = ({ reaction: { good, neutral, bad }, total }) => {
-  const positive = total > 0 ? Math.round((good / total) * 100) + '%' : '0%';
-
+const Feedback = ({ reaction: { good, neutral, bad }, total, positive }) => {
   return (
     <>
       <p>Good: {good}</p>

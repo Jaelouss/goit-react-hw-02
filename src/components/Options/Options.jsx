@@ -1,13 +1,13 @@
 import React from 'react';
 import Button from '../Button/Button';
 
-const Options = ({ vote, total }) => {
+const Options = ({ estim, total }) => {
   return (
     <>
-      <Button vote={() => vote('good')}>Good</Button>
-      <Button vote={() => vote('neutral')}>Neutral</Button>
-      <Button vote={() => vote('bad')}>Bad</Button>
-      {total > 0 && <Button vote={() => vote()}>Reset</Button>}
+      <Button estim={() => estim('good')}>Good</Button>
+      <Button estim={() => estim('neutral')}>Neutral</Button>
+      <Button estim={() => estim('bad')}>Bad</Button>
+      {total > 0 && <Button estim={() => estim('reset')}>Reset</Button>}
     </>
   );
 };
